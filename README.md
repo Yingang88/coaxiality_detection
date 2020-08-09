@@ -6,7 +6,7 @@
 
         1. Dynamic acquisition of the calibration images with the video function of the camera
 
-        2.  Scan the existing image data for calibration
+        2. Scan the existing image data for calibration
 
 ### - Image acquisition
 
