@@ -4,9 +4,9 @@
 
 ### - Calibration of the camera with OpenCV
 
-        1. Dynamic acquisition of the calibration images with the video function of the camera
+       Method 1. Images are taken directly from the camera for calibration.
 
-        2. Scan the existing image data for calibration
+       Method 2. Scan the existing image data for calibration.
 
 ### - Image acquisition
 
