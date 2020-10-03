@@ -1,15 +1,24 @@
-# Use of opencv to detect coaxiality detection of the object
+# Verwendung von Bilderkennung (OpenCV) zur Koaxilitätsdetektion des Bauteils
 
-## Documentation
+## Einführung
+Aufgrund des aufwendigen Aufbaus und Abbaus des mechanischen Koaxialitätsmessgerätes und der Anforderungen an die Messgeschwindigkeit ist die Verwendung einer Bilderkennungsmethode eine nützliche Lösung für die Koaxialitätsdetektion der Bauteile.
 
-### - Calibration of the camera with OpenCV
+Folgend wird der Hauptprozess eines mit der OpenCV-Bibliothek erstellten Programmes zur Erfassung der Koaxialität der zylinderförmigen Bauteile beschrieben. 
+### 1. Systeminitialisierungsprozess
+* Erstellung des Dokumentationsspeicherordners
+* Überprüfung des Kamerazustands
 
-       Method 1. Images are taken directly from the camera for calibration.
+### 2. Initialisierung der Kamera
+* Automatische Erfassung der Kameraauflösung
+* Angepasste Auflösung auswählen
+* Einstellung der erforderlichen Helligkeit und des Kontrastverhältnisse des Bildes
+* Erstellung eines Erfassungsbereiches (ROI)
+* Detektieren des Kalibrierungsmusters und Einstellung des Threshold-Wertes zur Erkennung der vollständigen Konturen des Kalibrierungsmusters
+* Einstellung der Kameraposition senkrecht zum Kalibrierungsmuster
+* Ausgeben ein Zustandsrückwertes für den Kalibrierungsprozess
 
-       Method 2. Scan the existing image data for calibration.
-
-### - Image acquisition
-
-### - 
+### 3. Betriebsprozess
+* Ausgeben des detektierten Ergebnisses im eingestellten Erfassungsbereich (ROI)
+* Speichern der erkannten Bilder nach der eingestellten Anforderung als Dokumente
 ### - 
 ### - 
