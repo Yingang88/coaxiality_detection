@@ -20,5 +20,15 @@ Folgend wird der Hauptprozess eines mit der OpenCV-Bibliothek erstellten Program
 ### 3. Betriebsprozess
 * Ausgeben des detektierten Ergebnisses im eingestellten Erfassungsbereich (ROI)
 * Speichern der erkannten Bilder nach der eingestellten Anforderung als Dokumente
+## Class-Diagramm
+
+
+| FolderOfImage |
+|---|
+| - folderPath: const char* <br> - imageType: const char* <br> - buildFolderFullPath(string folderFullPath): void <br> - buildFileFullPath(string fileFullPath): void|
+| + getFolderPath () const: string <br> + getImageType () const: string <br> + setFolderPath (const char* folderPath): void <br> + setImageType (const char* imageType): void <br> + createFolderInSystem (): bool <br> + saveImageInFolder (const char* name, Mat &image, int flag): bool <br> + findeImageFileSystem (): friend vector\<string\> |
+  
+  
 ### - 
-### - 
+
+
