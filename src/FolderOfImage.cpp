@@ -162,3 +162,65 @@ bool FolderOfImage::createFolderInSystem()
 	std::cout << "The Folder path does not exist!" << std::endl;
 	return false;
 }
+
+bool FolderOfImage::saveImageInFolder(const char* imagename, cv::Mat& image)
+{
+	if (nullptr == imagename)
+	{
+		std::cerr << "Das Eingabeformat des ImageName ist falsch!" << std::endl;
+		return false;
+	}
+	if (image.empty())
+	{
+		std::cerr << "Die Matrix des Bildes ist eine Leermatrix!" << std::endl;
+		return false;
+	}
+	std::string path;
+	_buildFileFullPath(path, imagename);
+	//std::cout << path << std::endl;
+
+	//TODO checken path Format 
+	if (true == cv::imwrite(path, image))
+	{
+		return true;
+	}
+	return false;
+}
+
+std::vector<std::string> FolderOfImage::findeImageFileSystem(const char* folderPath, const char* imageType)
+{
+	if (nullptr == folderPath || nullptr == imageType)
+	{
+		std::cerr << "Die Erstellung des Dateisuchpfads entsteht ein Fehler!" << std::endl;
+		std::string tmp = "\0";
+		std::vector<std::string> listFiles;
+		listFiles.push_back(tmp);
+		return listFiles;
+	}
+	std::string folderFullPath = std::string(folderPath) + "\\";
+	std::string fileSearchPath = folderFullPath;
+	fileSearchPath.append("*.");
+	fileSearchPath.append(imageType);
+	std::cout << fileSearchPath << std::endl;
+	intptr_t handle;
+	_finddata_t findData;
+	handle = _findfirst(fileSearchPath.c_str(), &findData);
+	if (-1 == handle)
+	{
+		std::cout << "Die durchsuchende Datei kann nicht gefunden werden!" << std::endl;
+		std::string tmp = "\0";
+		std::vector<std::string> listFiles;
+		listFiles.push_back(tmp);
+		_findclose(handle);
+		return listFiles;
+	}
+	std::string tmp;
+	std::vector<std::string> listFiles;
+	do
+	{
+		tmp = folderFullPath + findData.name;
+		listFiles.push_back(tmp);
+	}while (0 == _findnext(handle, &findData));
+	_findclose(handle);
+	return listFiles;
+}

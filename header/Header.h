@@ -22,8 +22,8 @@ public:
 	bool createFolderInSystem();
 
 	// TODO 
-	/*bool saveImageInFolder(const char* name, cv::Mat& image, int flag);
-	static std::vector<std::string> findeImageFileSystem(const char* folderPath, const char* imageType);*/
+	bool saveImageInFolder(const char* imagename, cv::Mat& image);
+	static std::vector<std::string> findeImageFileSystem(const char* folderPath, const char* imageType = "*");
 };
 /*********************************/
 
