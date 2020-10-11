@@ -20,11 +20,50 @@ public:
 	void setFolderPath(const char* folderPath);
 	void setImageType(const char* imageType);
 	bool createFolderInSystem();
-
-	// TODO 
 	bool saveImageInFolder(const char* imagename, cv::Mat& image);
 	static std::vector<std::string> findeImageFileSystem(const char* folderPath, const char* imageType = "*");
 };
 /*********************************/
+
+/***********InitiCamera***********/
+class InitiCamera
+{
+private:
+	int _deviceID{ 0 };
+	int _apiID{ cv::CAP_ANY };
+	int _frameWidth{640};
+	int _frameHeight{480};
+	int _roiX{0};
+	int _roiY{0};
+	int _roiWidth{0};
+	int _roiHeight{0};
+	bool _highDisplayRate{ false };
+	bool _setInitiCameraParameter();
+public:
+	InitiCamera(int deviceID = 0, int apiID = cv::CAP_ANY, int frameWidth = 640, int frameHeight = 480, bool highDisplayRate = false) 
+		:_deviceID(deviceID), _apiID(apiID), _frameWidth(frameWidth), _frameHeight(frameHeight), _highDisplayRate(highDisplayRate)
+	{
+		_setInitiCameraParameter();
+	}
+	virtual ~InitiCamera() {};
+	cv::Rect getRoiParameter()const;
+	void setRoiParameter(int deviceID, int apiID, int frameWidth, int frameHeight, bool highDisplayRate);
+};
+
+/*********************************/
+
+/***********ImageDetection***********/
+class ImageDetection
+{
+public:
+	cv::Mat imagePreprocessing(cv::Mat &image);
+
+};
+
+
+
+
+
+/************************************/
 
 #endif // !_HEADER_H_

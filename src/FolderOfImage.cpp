@@ -201,7 +201,7 @@ std::vector<std::string> FolderOfImage::findeImageFileSystem(const char* folderP
 	std::string fileSearchPath = folderFullPath;
 	fileSearchPath.append("*.");
 	fileSearchPath.append(imageType);
-	std::cout << fileSearchPath << std::endl;
+	//std::cout << fileSearchPath << std::endl;
 	intptr_t handle;
 	_finddata_t findData;
 	handle = _findfirst(fileSearchPath.c_str(), &findData);
